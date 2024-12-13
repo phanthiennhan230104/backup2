@@ -88,45 +88,6 @@ public class ChoosetableController {
 	    }
 	    return ResponseEntity.notFound().build();
 	}
-	
-//	@PostMapping("/update-table-status")
-//	public ResponseEntity<ResponseData> updateTableStatus(@RequestBody Map<String, String> request) {
-//	    String tableId = request.get("tableId");
-//	    boolean isAvailable = Boolean.parseBoolean(request.get("isAvailable"));
-//	    
-//	    // Lấy thông tin bàn từ database
-//	    TableEntities table = tableRepository.findById(tableId).orElse(null);
-//	    
-//	    if (table != null) {
-//	        // Kiểm tra nếu bàn đã đang được sử dụng (table_status = true)
-//	        if (table.isTableStatus()) {
-//	            // Nếu bàn đã được sử dụng, không cho phép thay đổi trạng thái và trả về thông báo lỗi
-//	            ResponseData responseData = new ResponseData();
-//	            responseData.setStatus(400); // Trả về lỗi 400 (Bad Request)
-//	            responseData.setDescription("Table is occupied! please choose another table!");
-//	            responseData.setData(null);
-//	            return ResponseEntity.status(400).body(responseData);
-//	        }
-//
-//	        // Cập nhật trạng thái bàn nếu bàn chưa được sử dụng (table_status = false)
-//	        table.setTableStatus(isAvailable);
-//	        tableRepository.save(table);
-//	        
-//	        // Chuẩn bị dữ liệu trả về sau khi cập nhật thành công
-//	        ResponseData responseData = new ResponseData();
-//	        responseData.setStatus(200);
-//	        responseData.setDescription("Choose table successfully.");
-//	        responseData.setData(table); // Gửi lại thông tin bàn
-//	        return ResponseEntity.ok(responseData);
-//	    }
-//	    
-//	    // Trả về lỗi nếu bàn không tồn tại
-//	    ResponseData responseData = new ResponseData();
-//	    responseData.setStatus(404);
-//	    responseData.setDescription("Table not found.");
-//	    responseData.setData(null);
-//	    return ResponseEntity.status(404).body(responseData);
-//	}
 	@PostMapping("/update-table-status")
 	public ResponseEntity<ResponseData> updateTableStatus(@RequestBody Map<String, String> request) {
 	    String tableId = request.get("tableId");
