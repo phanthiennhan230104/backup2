@@ -158,7 +158,7 @@ public class ChoosetableController {
 	            invoice.setTable(table);
 	            invoice.setUser(user);
 	            invoice.setCreateDate(new Timestamp(System.currentTimeMillis()));
-	            invoice.setSum(BigDecimal.ZERO);
+	            invoice.setSum(BigDecimal.valueOf(0.0));
 	            invoice.setPoint(0);
 	            invoiceRepository.save(invoice);
 	        } else {

@@ -1,7 +1,6 @@
 package com.myRestaurant.manager.Entities;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -9,15 +8,34 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class InvoiceMenuKey implements Serializable {
     @Column(name = "invoice_id")
-    private int invoice_id;
-    
+    private int invoiceId;
+
     @Column(name = "dish_id")
-    private int dish_id;
-    
-    public InvoiceMenuKey() {};
-    
-    public InvoiceMenuKey(int invoie_id, int dish_id) {
-    	this.invoice_id = invoie_id;
-    	this.dish_id = dish_id;
+    private int dishId;
+
+    public InvoiceMenuKey() {}
+
+    public InvoiceMenuKey(int invoiceId, int dishId) {
+        this.invoiceId = invoiceId;
+        this.dishId = dishId;
     }
+
+	public int getInvoiceId() {
+		return invoiceId;
+	}
+
+	public void setInvoiceId(int invoiceId) {
+		this.invoiceId = invoiceId;
+	}
+
+	public int getDishId() {
+		return dishId;
+	}
+
+	public void setDishId(int dishId) {
+		this.dishId = dishId;
+	}
+
+    // Getter và Setter
+    
 }

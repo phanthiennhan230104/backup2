@@ -3,11 +3,13 @@ package com.myRestaurant.manager.Dto;
 import lombok.Data;
 import java.math.BigDecimal;
 
+import com.myRestaurant.manager.Entities.DishType;
+
 @Data
 public class MenuDto {
     private int dishId;
     private String dishName;
-    private String dishType;
+    private DishType dishType;
     private BigDecimal price;
     private String imagePath;
     private String description;
@@ -23,10 +25,10 @@ public class MenuDto {
 	public void setDishName(String dishName) {
 		this.dishName = dishName;
 	}
-	public String getDishType() {
+	public DishType getDishType() {
 		return dishType;
 	}
-	public void setDishType(String dishType) {
+	public void setDishType(DishType dishType) {
 		this.dishType = dishType;
 	}
 	public BigDecimal getPrice() {

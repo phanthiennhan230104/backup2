@@ -138,14 +138,14 @@
                         body: JSON.stringify({
                             tableId: selectedTable,
                             userId: userId, // Truyền userId từ localStorage
-                            isAvailable: false, // Cập nhật trạng thái bàn thành "đang sử dụng"
+                            isAvailable: true, // Cập nhật trạng thái bàn thành "đang sử dụng"
                         }),
                     })
                         .then(response => response.json())
                         .then(data => {
                             if (data.status === 200) {
                                 alert(data.description);
-                                window.location.href = '/homepage-user/menu'; // Chuyển hướng đến giao diện menu
+                                window.location.href = '/menu'; // Chuyển hướng đến giao diện menu
                             } else {
                                 alert('Error: ' + data.description);
                             }

@@ -3,35 +3,37 @@ package com.myRestaurant.manager.Entities;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.EmbeddedId;
 
-@Entity(name = "invoice_menu")
+@Entity
+@Table(name = "invoice_menuu")
 public class InvoiceMenuEntities {
-
+    
     @EmbeddedId
-    private InvoiceMenuKey id;
-
+    private InvoiceMenuKey id;  // Khóa chính composite
+    
     @ManyToOne
+    @MapsId("invoiceId")  // Mối quan hệ với hóa đơn
     @JoinColumn(name = "invoice_id", referencedColumnName = "invoice_id", insertable = false, updatable = false)
     private InvoiceEntities invoiceEntities;
-
+    
     @ManyToOne
+    @MapsId("dishId")  // Mối quan hệ với món ăn
     @JoinColumn(name = "dish_id", referencedColumnName = "dish_id", insertable = false, updatable = false)
     private MenuEntities menuEntities;
 
-    @Column(name = "quantity", nullable = false)
-    private int quantity;
+    private int quantity;  // Số lượng món ăn
+    private BigDecimal totalPrice;  // Tổng giá của món ăn
 
-    @Column(name = "total_price", nullable = false)
-    private BigDecimal totalPrice;
-
-    @Column(name = "dish_status", nullable = false)
-    private int dishStatus;
-
-    // Getters and Setters
+    // Getter và Setter cho các thuộc tính khác
     public InvoiceMenuKey getId() {
         return id;
     }
@@ -52,11 +54,11 @@ public class InvoiceMenuEntities {
         return menuEntities;
     }
 
-    public void setMenu(MenuEntities menuEntities) {
+    public void setMenuEntities(MenuEntities menuEntities) {
         this.menuEntities = menuEntities;
     }
 
-    public long getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -72,11 +74,12 @@ public class InvoiceMenuEntities {
         this.totalPrice = totalPrice;
     }
 
-    public int getDishStatus() {
-        return dishStatus;
+    // Tính toán tổng giá
+    public void calculateTotalPrice() {
+        if (this.menuEntities != null && this.menuEntities.getPrice() != null) {
+            // Chuyển quantity thành BigDecimal và tính tổng giá
+            this.totalPrice = this.menuEntities.getPrice().multiply(BigDecimal.valueOf(this.quantity));
+        }
     }
 
-    public void setDishStatus(int dishStatus) {
-        this.dishStatus = dishStatus;
-    }
 }

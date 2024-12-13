@@ -10,7 +10,8 @@ public class InvoiceDto {
     private int userId;  // Chỉ lưu userId thay vì đối tượng UserEntities
     private String tableId;  // Chỉ lưu tableId thay vì đối tượng TableEntities
     private BigDecimal sum;
-    private long point;
+    private int point;
+    private boolean invoiceStatus;
 
     // Getters and Setters
     public int getInvoiceId() {
@@ -49,7 +50,15 @@ public class InvoiceDto {
         return point;
     }
 
-    public void setPoint(long point) {
+    public void setPoint(int point) {
         this.point = point;
     }
+
+	public boolean isInvoiceStatus() {
+		return invoiceStatus;
+	}
+
+	public void setInvoiceStatus(boolean invoiceStatus) {
+		this.invoiceStatus = invoiceStatus;
+	}
 }

@@ -1,5 +1,7 @@
 package com.myRestaurant.manager.Entities;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +15,7 @@ public class Dish {
     private int dishId;
 
     private String dishName;
-    private double price;
+    private BigDecimal price;
     private String imagePath;
 
     // Getters and Setters
@@ -33,11 +35,11 @@ public class Dish {
         this.dishName = dishName;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

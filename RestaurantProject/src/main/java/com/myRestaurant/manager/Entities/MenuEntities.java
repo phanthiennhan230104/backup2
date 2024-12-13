@@ -22,8 +22,8 @@ public class MenuEntities {
     @Column(name = "dish_name", nullable = false)
     private String dishName;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "dish_type", nullable = false)
+    @Enumerated(EnumType.STRING)  // Áp dụng enum cho cột này
     private DishType dishType;
 
     @Column(name = "price", nullable = false)
@@ -62,12 +62,12 @@ public class MenuEntities {
     }
 
     public DishType getDishType() {
-		return dishType;
-	}
+        return dishType;
+    }
 
-	public void setDishType(DishType dishType) {
-		this.dishType = dishType;
-	}
+    public void setDishType(DishType dishType) {
+        this.dishType = dishType;
+    }
 
     public BigDecimal getPrice() {
         return price;

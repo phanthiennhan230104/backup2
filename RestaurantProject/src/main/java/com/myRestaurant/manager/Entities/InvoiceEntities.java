@@ -38,10 +38,13 @@ public class InvoiceEntities {
     private BigDecimal sum;
 
     @Column(name = "point", nullable = false)
-    private long point;
+    private int point;
 
     @OneToMany(mappedBy = "invoiceEntities")
     private Set<InvoiceMenuEntities> invoiceMenus;
+    
+    @Column(name = "invoice_status", nullable = false)
+    private boolean invoiceStatus;
 
     // Getters and Setters
     public int getInvoiceId() {
@@ -80,15 +83,15 @@ public class InvoiceEntities {
         return sum;
     }
 
-    public void setSum(BigDecimal d) {
-        this.sum = d;
+    public void setSum(BigDecimal f) {
+        this.sum = f;
     }
 
-    public long getPoint() {
+    public int getPoint() {
         return point;
     }
 
-    public void setPoint(long point) {
+    public void setPoint(int point) {
         this.point = point;
     }
 
@@ -99,4 +102,20 @@ public class InvoiceEntities {
     public void setInvoiceMenus(Set<InvoiceMenuEntities> invoiceMenus) {
         this.invoiceMenus = invoiceMenus;
     }
+
+	public List<InvoiceMenuEntities> getInvoiceMenuEntities() {
+		return invoiceMenuEntities;
+	}
+
+	public void setInvoiceMenuEntities(List<InvoiceMenuEntities> invoiceMenuEntities) {
+		this.invoiceMenuEntities = invoiceMenuEntities;
+	}
+
+	public boolean isInvoiceStatus() {
+		return invoiceStatus;
+	}
+
+	public void setInvoiceStatus(boolean invoiceStatus) {
+		this.invoiceStatus = invoiceStatus;
+	}
 }
